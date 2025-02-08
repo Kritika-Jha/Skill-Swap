@@ -1,0 +1,126 @@
+/* General reset for the auth container */
+.auth-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Stretch content to fill the container */
+  height: 100vh;
+  padding-right: 80px;
+  background: linear-gradient(90deg, #010001,#400943); /* Gradient background */
+}
+
+/* Left content styling */
+.left-content {
+  flex: 1;
+  padding: 20px 0px 0 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically align the content */
+}
+
+.left-content h2 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 4rem;
+  color: #ffffff; /* Title color */
+}
+
+.left-content h4 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2.5rem;
+  color: #bb6dd1; /* Title color */
+}
+
+.left-content p {
+  font-size: 1.7rem;
+  color: #edc7f0;
+  margin-top: 0;
+}
+
+/* Right content (form) styling */
+.right-content {
+  flex: 1;
+  padding: 40px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically align the form */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.right-content form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-content input {
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+}
+
+.right-content input:focus {
+  border-color: #000000;
+  outline: none;
+}
+
+.right-content button {
+  background: linear-gradient(135deg, #781e7c, #f4a7ec); /* Gradient button */
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.right-content button:hover {
+  background: linear-gradient(135deg, #330236, #f4a7ec); /* Darker gradient on hover */
+}
+
+/* Links styling */
+.right-content p {
+  font-size: 1rem;
+  margin-top: 20px;
+  color: #d9a8dc;
+}
+
+.right-content a {
+  text-decoration: none;
+  color: #939393;
+  font-weight: bold;
+}
+
+.right-content a:hover {
+  text-decoration: underline;
+}
+
+/* Media Query for smaller screens
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .left-content, .right-content {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .left-content h2 {
+    font-size: 2rem;
+  }
+
+  .right-content form {
+    padding: 20px;
+  }
+} */
