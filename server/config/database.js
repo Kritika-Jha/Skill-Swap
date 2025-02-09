@@ -1,4 +1,3 @@
-// server/config/database.js
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
@@ -6,13 +5,20 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    const conn = await mongoose.connect(process.env.MONGODB_URI);
+    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error(`Error: ${error.message}`);
+    console.error(`❌ MongoDB Connection Error: ${error.message}`);
+    
+    // Specific error handling for common MongoDB issues
+    if (error.message.includes('bad auth')) {
+      console.error('⚠️ Check your MongoDB username/password.');
+    } else if (error.message.includes('ECONNREFUSED')) {
+      console.error('⚠️ Cannot reach MongoDB. Ensure it is running.');
+    } else if (error.message.includes('whitelist')) {
+      console.error('⚠️ IP not whitelisted in MongoDB Atlas. Add it in Network Access.');
+    }
+    
     process.exit(1);
   }
 };

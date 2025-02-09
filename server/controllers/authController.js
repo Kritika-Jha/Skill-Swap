@@ -1,8 +1,10 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/userModel'); // Ensure correct path to User model
+const jwt = require('jsonwebtoken'); // ✅ Add JWT for authentication
+const User = require('../models/User'); // Ensure correct path to User model
+require('dotenv').config(); // ✅ Load environment variables
 
 exports.signup = async (req, res) => {
-  console.log("Signup Route Hit", req.body); // Debugging
+  console.log("✅ Signup Route Hit", req.body); // Debugging
 
   const { name, email, password } = req.body;
 
@@ -20,17 +22,27 @@ exports.signup = async (req, res) => {
     const newUser = new User({ name, email, password: hashedPassword });
 
     await newUser.save();
-    console.log("User Saved Successfully:", newUser);
+    console.log("✅ User Saved Successfully:", newUser);
 
-    res.status(201).json({ success: true, message: 'User created successfully!' });
+    // ✅ Generate JWT Token
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+
+    // ✅ Send `_id` and token in the response
+    res.status(201).json({ 
+      success: true, 
+      message: 'User created successfully!',
+      user: { _id: newUser._id, name: newUser.name, email: newUser.email },  
+      token  
+    });
+
   } catch (error) {
-    console.error("Error saving user:", error);
+    console.error("❌ Error saving user:", error);
     res.status(500).json({ success: false, message: 'Error registering user' });
   }
 };
 
 exports.login = async (req, res) => {
-  console.log("Login Route Hit", req.body); // Debugging
+  console.log("✅ Login Route Hit", req.body); // Debugging
 
   const { email, password } = req.body;
 
@@ -49,9 +61,19 @@ exports.login = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Invalid credentials!' });
     }
 
-    res.status(200).json({ success: true, message: 'Login successful', user });
+    // ✅ Generate JWT Token
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+
+    // ✅ Send `_id` and token in the response
+    res.status(200).json({ 
+      success: true, 
+      message: 'Login successful', 
+      user: { _id: user._id, name: user.name, email: user.email },  
+      token  
+    });
+
   } catch (error) {
-    console.error("Error logging in:", error);
+    console.error("❌ Error logging in:", error);
     res.status(500).json({ success: false, message: 'Error logging in' });
   }
 };
