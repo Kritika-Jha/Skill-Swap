@@ -3,7 +3,6 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
-const quizRoutes = require('./routes/quizRoutes');
 const userRoutes = require('./routes/userRoutes');  
 
 dotenv.config();
@@ -17,7 +16,6 @@ app.use(cors());
 
 // API Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/quiz', quizRoutes);
 app.use('/api/user', userRoutes);  
 
 app.get('/', (req, res) => {
