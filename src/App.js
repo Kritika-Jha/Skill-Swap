@@ -12,8 +12,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/skills" element={<SkillsPage />} />  {/* New Route */}
-        <Route path="/quiz/:skill" element={<QuizPage />} />
+        <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/quiz/:skillName" element={<QuizPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -57,4 +57,33 @@ router.post("/add-skill", async (req, res) => {
   }
 });
 
+// ✅ Update Skill Rating After Quiz
+router.post("/update-skill", async (req, res) => {
+  try {
+    const { userId, skillName, rating } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ error: "Invalid user ID format" });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // ✅ Check if the user has this skill, update its rating
+    const skillIndex = user.skills.findIndex((s) => s.skillName === skillName);
+    if (skillIndex !== -1) {
+      user.skills[skillIndex].rating = rating; // ✅ Update rating
+      await user.save();
+      return res.json({ success: true, message: "Skill rating updated!", skills: user.skills });
+    } else {
+      return res.status(404).json({ error: "Skill not found" });
+    }
+  } catch (err) {
+    console.error("❌ Error updating skill rating:", err);
+    res.status(500).json({ error: "Server Error" });
+  }
+});
+
 module.exports = router;
