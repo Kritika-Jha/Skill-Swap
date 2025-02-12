@@ -12,7 +12,7 @@ const MatchPage = () => {
 
   useEffect(() => {
     if (!userId) return;
-    
+
     axios
       .get(`http://localhost:5000/api/user/match/${userId}`)
       .then((res) => setMatches(res.data.matches || []))
@@ -66,6 +66,7 @@ const MatchPage = () => {
             <ul>{selectedProfile.canTeach.map((skill, index) => <li key={index}>{skill}</li>)}</ul>
             <h4>📖 Wants to Learn</h4>
             <ul>{selectedProfile.wantsToLearn.map((skill, index) => <li key={index}>{skill}</li>)}</ul>
+            {/* ✅ FIX: Pass the correct user ID when navigating */}
             <button className="view-full-profile-btn" onClick={() => navigate(`/profile/${selectedProfile.id}`)}>
               📄 View Full Profile
             </button>
