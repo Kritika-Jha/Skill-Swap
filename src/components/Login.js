@@ -11,10 +11,15 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { // Corrected endpoint
-        email,
-        password
-      });
+      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      // if (response.data.success) {
+      //   // Store the JWT token in localStorage or sessionStorage
+      //   localStorage.setItem('token', response.data.token);
+      //   navigate('/MainPage');  // Redirect to profile page
+      // const response = await axios.post('http://localhost:5000/api/auth/login', { // Corrected endpoint
+      //   email,
+      //   password
+      // });
       if (response.data.success) {
         // Store the JWT token in localStorage or sessionStorage
         localStorage.setItem('token', response.data.token);

@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    padding: 0 20px ;
+    background-color: #100113;
+    opacity: 80%;
+    color: white;
+    height: 100px;
+    margin: 0; 
+    width: 100%;
+    top: 0;
+    left: 0; 
+}
+
+.header .logo img {
+    margin-left: 40px;
+    height: 100px; 
+}
+
+.header .links a {
+    margin: 0 20px ;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding-right: 30px;
+    padding-left: 0;
+}
+
+.header .links a:hover {
+    color: #ba03c7; 
+}
+
+.header .links a:active {
+    text-decoration: underline;
+    color: white;
+}
