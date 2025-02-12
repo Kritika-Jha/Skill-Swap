@@ -5,7 +5,7 @@ import "./ProfilePage.css";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const { userId } = useParams(); // ✅ Supports viewing other profiles
+  const { userId } = useParams();
   const loggedInUserId = localStorage.getItem("userId");
 
   const [user, setUser] = useState(null);
@@ -17,7 +17,7 @@ const ProfilePage = () => {
   useEffect(() => {
     if (!userId) {
       console.error("❌ No user ID found. Redirecting...");
-      navigate("/skills");
+      navigate("/login");
       return;
     }
 
@@ -120,7 +120,17 @@ const ProfilePage = () => {
         )}
       </div>
 
-      <h3>📖 Teaching Skills</h3>
+      <div className="skills-header">
+        <h3>📖 Teaching Skills</h3>
+        {isOwnProfile && (
+          <button
+            className="edit-skills-button"
+            onClick={() => navigate("/skills")}
+          >
+            ✏️ Edit
+          </button>
+        )}
+      </div>
       <ul className="skill-list">
         {user.skills.length > 0 ? (
           user.skills.map((s, i) => (

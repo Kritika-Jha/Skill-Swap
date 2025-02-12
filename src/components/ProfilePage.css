@@ -28,6 +28,26 @@
     margin-top: 20px;
   }
   
+  .skills-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .edit-skills-button {
+    background: none;
+    border: none;
+    color: #ff4b5c;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: 0.3s;
+  }
+  
+  .edit-skills-button:hover {
+    color: #ff6b6b;
+  }
+  
   .skill-list {
     display: flex;
     flex-wrap: wrap;
