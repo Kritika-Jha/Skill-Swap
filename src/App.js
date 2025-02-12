@@ -21,6 +21,8 @@ function App() {
         <Route path="/quiz/:skillName" element={<QuizPage />} />
         <Route path="/matches" element={<MatchPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/:userId" element={<ProfilePage />} />
+
       </Routes>
     </BrowserRouter>
   );

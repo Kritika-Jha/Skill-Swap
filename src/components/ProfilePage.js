@@ -5,7 +5,7 @@ import "./ProfilePage.css";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const userId = localStorage.getItem("userId"); // ✅ Get user ID from localStorage
+  const userId = localStorage.getItem("userId");
 
   const [user, setUser] = useState(null);
   const [newLearningSkill, setNewLearningSkill] = useState("");
@@ -19,7 +19,15 @@ const ProfilePage = () => {
     }
 
     axios.get(`http://localhost:5000/api/user/${userId}`)
-      .then(res => setUser(res.data))
+      .then(res => {
+        const fetchedUser = res.data;
+        setUser({
+          ...fetchedUser,
+          skills: fetchedUser.skills || [], // ✅ Ensure skills is always an array
+          learningSkills: fetchedUser.learningSkills || [], // ✅ Ensure learningSkills is always an array
+          about: fetchedUser.about || "", // ✅ Ensure about section exists
+        });
+      })
       .catch(err => console.error("❌ Error fetching profile:", err));
   }, [userId, navigate]);
 
@@ -27,7 +35,7 @@ const ProfilePage = () => {
     if (!newLearningSkill.trim()) return;
 
     axios.post("http://localhost:5000/api/user/add-learning-skill", { userId, skill: newLearningSkill })
-      .then(res => setUser(prev => ({ ...prev, learningSkills: res.data.learningSkills })))
+      .then(res => setUser(prev => ({ ...prev, learningSkills: res.data.learningSkills || [] })))
       .catch(err => console.error("❌ Error adding learning skill:", err));
 
     setNewLearningSkill("");
@@ -35,12 +43,12 @@ const ProfilePage = () => {
 
   const removeLearningSkill = (skillToRemove) => {
     axios.post("http://localhost:5000/api/user/remove-learning-skill", { userId, skill: skillToRemove })
-      .then(res => setUser(prev => ({ ...prev, learningSkills: res.data.learningSkills })))
+      .then(res => setUser(prev => ({ ...prev, learningSkills: res.data.learningSkills || [] })))
       .catch(err => console.error("❌ Error removing skill:", err));
   };
 
   const updateProfile = () => {
-    axios.post("http://localhost:5000/api/user/update-profile", { userId, name: user.name, email: user.email, about: user.about || "" })
+    axios.post("http://localhost:5000/api/user/update-profile", { userId, name: user.name, email: user.email, about: user.about })
       .then(res => {
         setUser(res.data);
         setIsEditing(false);
@@ -64,22 +72,32 @@ const ProfilePage = () => {
 
         <label>📝 About Me:</label>
         {isEditing ? (
-          <textarea value={user.about || ""} onChange={(e) => setUser({ ...user, about: e.target.value })} />
+          <textarea value={user.about} onChange={(e) => setUser({ ...user, about: e.target.value })} />
         ) : (
           <p>{user.about || "No additional information."}</p>
         )}
       </div>
 
       <h3>📖 Teaching Skills</h3>
-      <ul>{user.skills.map((s, i) => <li key={i}>{s.skillName} ({s.rating})</li>)}</ul>
+      <ul>
+        {user.skills.length > 0 ? (
+          user.skills.map((s, i) => <li key={i}>{s.skillName} ({s.rating})</li>)
+        ) : (
+          <p>No skills added.</p>
+        )}
+      </ul>
 
       <h3>🎯 Learning Skills</h3>
       <ul>
-        {user.learningSkills.map((s, i) => (
-          <li key={i}>
-            {s} {isEditing && <button className="delete-skill" onClick={() => removeLearningSkill(s)}>❌</button>}
-          </li>
-        ))}
+        {user.learningSkills.length > 0 ? (
+          user.learningSkills.map((s, i) => (
+            <li key={i}>
+              {s} {isEditing && <button className="delete-skill" onClick={() => removeLearningSkill(s)}>❌</button>}
+            </li>
+          ))
+        ) : (
+          <p>No learning skills added.</p>
+        )}
       </ul>
 
       {isEditing && (
