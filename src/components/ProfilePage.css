@@ -1,87 +1,60 @@
 .profile-container {
-    background: linear-gradient(135deg, #1e1e2e, #282a36);
+    background: linear-gradient(120deg, #1a1a2e, #16213e);
     color: white;
     padding: 40px;
     min-height: 100vh;
     text-align: center;
-    border-radius: 10px;
   }
   
-  .profile-details {
-    background: rgba(255, 255, 255, 0.1);
+  .profile-header {
+    background: #222;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
   }
   
-  .profile-details label {
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
+  .profile-details {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
   }
   
-  .profile-details input,
-  .profile-details textarea {
-    width: 90%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: none;
+  .profile-details p {
+    font-size: 1.2em;
   }
   
-  .edit-profile-section {
+  h3 {
     margin-top: 20px;
   }
   
-  .edit-profile-section input {
-    padding: 10px;
-    width: 250px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  
-  .edit-profile-section button {
-    background: #ff5722;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style: none;
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
     padding: 0;
   }
   
-  ul li {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .delete-skill {
-    background: #ff3d3d;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+  .skill-item {
+    background: #444;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 5px;
   }
   
   .edit-button {
-    margin-top: 20px;
-    background: #4caf50;
+    background: #ff4b5c;
     color: white;
-    padding: 12px 18px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: 0.3s;
+  }
+  
+  .edit-button:hover {
+    background: #ff6b6b;
   }
   
