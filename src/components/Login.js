@@ -11,22 +11,19 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-<<<<<<< HEAD
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-      if (response.data.success) {
-        // Store the JWT token in localStorage or sessionStorage
-        localStorage.setItem('token', response.data.token);
-        navigate('/MainPage');  // Redirect to profile page
-=======
-      const response = await axios.post('http://localhost:5000/api/auth/login', { // Corrected endpoint
-        email,
-        password
-      });
+      // if (response.data.success) {
+      //   // Store the JWT token in localStorage or sessionStorage
+      //   localStorage.setItem('token', response.data.token);
+      //   navigate('/MainPage');  // Redirect to profile page
+      // const response = await axios.post('http://localhost:5000/api/auth/login', { // Corrected endpoint
+      //   email,
+      //   password
+      // });
       if (response.data.success) {
         // Store the JWT token in localStorage or sessionStorage
         localStorage.setItem('token', response.data.token);
         navigate('/mainPage');  
->>>>>>> dd17ba1e2a007df4b259dd3e202f8abbdb8e593f
       } else {
         alert('Invalid credentials!');
       }
