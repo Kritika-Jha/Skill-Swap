@@ -12,17 +12,25 @@ const SignUpPage = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', { // Correct endpoint
+      const response = await axios.post('http://localhost:5000/api/auth/signup', {
         name,
         email,
         password
       });
-      console.log("Signup successful:", response.data);
-      navigate('/mainPage');
+  
+      console.log("✅ Signup successful response:", response.data); // Debugging log
+  
+      if (response.data.user && response.data.user._id) {
+        localStorage.setItem("userId", response.data.user._id);
+        navigate('/mainPage');  
+      } else {
+        console.error("❌ Signup failed: user ID missing in response");
+      }
     } catch (error) {
-      console.error("SignUp error:", error.response ? error.response.data : error.message);
+      console.error("❌ SignUp error:", error.response ? error.response.data : error.message);
     }
   };
+  
   
 
   return (

@@ -1,0 +1,122 @@
+
+.skills-container {
+    background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+    color: white;
+    text-align: center;
+    padding: 40px 10px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* 🔹 Skill Input Section */
+  .add-skill-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .add-skill-section input {
+    background: #222;
+    border: 2px solid #444;
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: white;
+    font-size: 1rem;
+    width: 250px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .add-skill-section input:focus {
+    border-color: #0096c7;
+    background: #333;
+  }
+  
+  /* 🔘 Add Skill Button */
+  .add-skill-section button {
+    background: #0096c7;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .add-skill-section button:hover {
+    background: #0077b6;
+    transform: scale(1.05);
+  }
+  
+  /* 🏆 Skills List */
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 900px;
+  }
+  
+  /* 🔥 Skill Card */
+  .skill-box {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+  }
+  
+  .skill-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 150, 199, 0.3);
+  }
+  
+  /* 📌 Skill Title */
+  .skill-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #00a8e8;
+  }
+  
+  /* ⭐ Skill Rating */
+  .skill-box p {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  
+  /* 🎯 Take/Retake Quiz Button */
+  .skill-box button {
+    background: #00a8e8;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .skill-box button:hover {
+    background: #0077b6;
+    transform: scale(1.1);
+  }
+  
+  /* 📱 Responsive Design */
+  @media (max-width: 768px) {
+    .skills-list {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .skill-box {
+      width: 90%;
+    }
+  }
+  
