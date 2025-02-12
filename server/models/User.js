@@ -15,7 +15,15 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   skills: {
-    type: [{ skillName: String, rating: String }], // ✅ Ensure `skills` is an array of objects
+    type: [{ skillName: String, rating: String }], // ✅ Teaching skills (from Skills Page)
+    default: [],
+  },
+  learningSkills: {
+    type: [String], // ✅ Skills the user wants to learn
+    default: [],
+  },
+  interactions: {
+    type: [{ userId: mongoose.Schema.Types.ObjectId, rating: Number }], // ✅ Future AI-based learning
     default: [],
   },
 });
