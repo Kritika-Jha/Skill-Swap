@@ -23,6 +23,7 @@ const LoginPage = () => {
       if (response.data.success) {
         // Store the JWT token in localStorage or sessionStorage
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem("userId", response.data.user._id);
         navigate('/mainPage');  
       } else {
         alert('Invalid credentials!');
