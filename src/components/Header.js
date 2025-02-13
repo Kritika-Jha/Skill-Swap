@@ -1,18 +1,21 @@
-import React from 'react';
-import './Header.css'; // Ensure this CSS file exists for styling
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
+  const userId = localStorage.getItem("userId");
+
   return (
     <div className="header">
       <div className="logo">
         <img src="/image/logo.png" alt="logo" />
       </div>
       <div className="links">
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Home</a>
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">About</a>
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Courses</a>
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Profile</a>
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Contact</a>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/courses">Courses</Link>
+        <Link to={userId ? `/profile/${userId}` : "/login"}>Profile</Link>
+        <Link to="/contact">Contact</Link>
       </div>
     </div>
   );
