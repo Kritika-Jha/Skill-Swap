@@ -1,20 +1,22 @@
-import React from 'react';
-import './Header.css'; // Ensure this CSS file exists for styling
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
-  const navigate = useNavigate();
+  const userId = localStorage.getItem("userId");
+
   return (
     <div className="header">
       <div className="logo">
         <img src="/image/logo.png" alt="logo" />
       </div>
       <div className="links">
-        <a onClick={() => navigate("/mainPage")} rel="noopener noreferrer">Home</a>
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">About</a>
-        <a onClick={() => navigate("/courses")} rel="noopener noreferrer">Courses</a>
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Profile</a>
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Contact</a>
+        <Link to="/mainPage">Home</Link>
+        <Link to="/mainPage">About</Link>
+        <Link to="/courses">Courses</Link>
+        <Link to={userId ? `/profile/${userId}` : "/login"}>Profile</Link>
+        <Link to="/matches">Recommended4U</Link>
+        <Link to="/contact">Contact</Link>
       </div>
     </div>
   );
