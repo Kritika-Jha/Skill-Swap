@@ -7,6 +7,10 @@ import SkillsPage from "./components/SkillsPage";
 import QuizPage from "./components/QuizPage";
 import MatchPage from "./components/MatchPage";
 import ProfilePage from "./components/ProfilePage";
+import CoursesPage from "./components/CoursesPage";
+import CoursePurchasePage from "./components/CoursePurchasePage";
+import SuccessPage from "./components/SuccessPage";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -24,6 +28,10 @@ function App() {
         <Route path="/matches" element={<MatchPage />} />
         <Route path="/profile/:userId" element={<ProfilePage />} /> 
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/courses/purchase" element={<CoursePurchasePage />} />
+        <Route path="/courses/success" element={<SuccessPage />} />
+
       </Routes>
       <Footer />
     </BrowserRouter>
