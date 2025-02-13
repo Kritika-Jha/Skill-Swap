@@ -11,8 +11,8 @@ const Header = () => {
         <img src="/image/logo.png" alt="logo" />
       </div>
       <div className="links">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/mainPage">Home</Link>
+        <Link to="/mainPage">About</Link>
         <Link to="/courses">Courses</Link>
         <Link to={userId ? `/profile/${userId}` : "/login"}>Profile</Link>
         <Link to="/matches">Recommended4U</Link>
