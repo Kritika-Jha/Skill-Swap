@@ -62,9 +62,14 @@
   padding: 12px 15px;
   margin-bottom: 20px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1.4rem;
   transition: all 0.3s ease;
+  
+    width: 100%; /* Ensures all input fields have the same width */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+
+
 }
 
 .right-content input:focus {
@@ -105,7 +110,7 @@
   text-decoration: underline;
 }
 
-/* Media Query for smaller screens
+/* Media Query for smaller screens */
 @media (max-width: 768px) {
   .auth-container {
     flex-direction: column;
@@ -123,4 +128,4 @@
   .right-content form {
     padding: 20px;
   }
-} */
+}

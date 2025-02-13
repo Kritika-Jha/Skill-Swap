@@ -1,9 +1,15 @@
 .profile-container {
-  background: linear-gradient(120deg, #1a1a2e, #25283d);
-  color: white;
-  padding: 80px 40px 40px;
+  background: linear-gradient(120deg, #9898d3, #4a2e63);
+  color: rgb(10, 10, 10);
+  padding: 80px 50px 80px 50px;
   min-height: 100vh;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  width: 80%;
+  margin: 150px 80px 30px 90px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 16px rgba(219, 213, 213, 0.695);
 }
 
 .profile-header {
@@ -18,14 +24,17 @@
 .profile-details {
   background: rgba(255, 255, 255, 0.15);
   padding: 20px;
+  border-color: black;
   border-radius: 12px;
   margin-bottom: 20px;
+  font-size: 1.6rem;
   box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
 }
 
 .profile-details p {
-  font-size: 1.2em;
+  font-size: 1.5em;
   color: #e0e0e0;
+  align-items: center;
 }
 
 h3 {
@@ -58,12 +67,13 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   list-style-type: none;
   padding: 0;
 }
 
 .skill-item {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 148, 196, 0.719);
   padding: 10px 20px;
   border-radius: 12px;
   margin: 5px;

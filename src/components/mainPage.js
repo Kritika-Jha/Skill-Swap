@@ -107,7 +107,7 @@ const MainPage = () => {
           </div>
         </section>
 
-        <section className="contact">
+        <section id="contact" className="contact">
           <h2>Contact Us</h2>
           <p>Have questions or feedback? Reach out!</p>
           <form className="contact-form" onSubmit={handleSubmit}>

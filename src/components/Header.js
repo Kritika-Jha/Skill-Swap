@@ -13,10 +13,9 @@ const Header = () => {
       <div className="links">
         <Link to="/mainPage">Home</Link>
         <Link to="/mainPage">About</Link>
-        <Link to="/courses">Courses</Link>
         <Link to={userId ? `/profile/${userId}` : "/login"}>Profile</Link>
         <Link to="/matches">Recommended4U</Link>
-        <Link to="/contact">Contact</Link>
+        <Link to="/courses">Courses</Link>
       </div>
     </div>
   );
