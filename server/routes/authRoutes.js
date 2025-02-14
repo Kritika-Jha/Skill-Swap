@@ -6,14 +6,12 @@ const authController = require('../controllers/authController');
 router.options('/login', (req, res) => {
   res.header('Access-Control-Allow-Origin', 'https://skill-swap-web.vercel.app');
   res.header('Access-Control-Allow-Methods', 'POST');
-  res.header("Access-Control-Allow-credentials", true);
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.send();
 });
 router.options('/signup', (req, res) => {
   res.header('Access-Control-Allow-Origin', 'https://skill-swap-web.vercel.app');
   res.header('Access-Control-Allow-Methods', 'POST');
-  res.header("Access-Control-Allow-credentials", true);
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.send();
 });
