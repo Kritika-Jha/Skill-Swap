@@ -11,7 +11,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://skill-swap-u2xd.onrender.com/api/auth/login', { email, password });
+      const response = await axios.post('https://skill-swap-backend-wbxk.onrender.com/api/auth/login', { email, password });
       // if (response.data.success) {
       //   // Store the JWT token in localStorage or sessionStorage
       //   localStorage.setItem('token', response.data.token);
