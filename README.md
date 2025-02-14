@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+## SkillSwap-Learn, Teach, and Grow Together!
+### 🔹Overview
+#### SkillSwap is a dynamic platform that connects individuals looking to learn and teach skills in a collaborative, cash-free exchange. By leveraging peer-to-peer learning, users can showcase their expertise, discover like-minded learners, and upskill effortlessly. With personalized profiles, skill-based recommendations, and curated learning resources, SkillSwap creates an engaging ecosystem where knowledge is the currency and growth is a shared journey.
+### 🔹Features
+#### 1️⃣ Authentication (Login/Sign-Up)
+<ul>
+<li>User Registration – Create an account to access SkillSwap.</li>
+<li>Secure Login – Sign in to view and manage your profile.</li>
+<li>Seamless Navigation – Redirects users to the Home Page after login/sign-up.</li>
+</ul>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### 2️⃣ Home Page (Landing Page)
+<li>Welcome to SkillSwap – Introduction to the platform and how it works.</li>
+<li>Easy Navigation – Direct links to Profile, Recommendations, and Courses.</li>
+<li>Call-to-Action Buttons – Quick access to Sign-Up, Log In, and Explore Skill Matches.</li>
+</ul>
 
-## Available Scripts
+#### 3️⃣ Profile Page
+<ul>
+<li>User Dashboard – Displays name, bio, and profile picture.</li>
+<li>Skills You Offer – List of skills available for teaching.</li>
+<li>Skills You Want to Learn – Highlights the skills the user is looking to acquire.</li>
+<li>Edit & Update – Users can modify their bio, skills, and other details anytime.</li>
+</ul>
 
-In the project directory, you can run:
+#### 4️⃣ Recommended for You Page
+<ul>
+<li>Find Your Skill Partner – Displays users whose skills match what you want to learn.</li>
+<li>Explore Profiles – View details of recommended users and their skill sets.</li>
+<!-- <li>Direct Interaction – Users can check profiles and manually decide whom to connect with.</li> -->
+</ul>
 
-### `npm start`
+#### 5️⃣ Courses Page
+<ul>
+<li>Self-Paced Learning – Browse courses for skill enhancement.</li>
+<!-- <li>Detailed Course Info – Each course includes a title, description, and category.</li> -->
+<li>Instant Enrollment – Start learning with just one click.</li>
+</ul>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🔹Tech Stack
+<ul>
+<li>SkillSwap is built using the MERN Stack along with CSS for styling.</li>
+</ul>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔹Challenges Faced & Learnings
+<ul>
+<li>Skill Verification & Rating – Designing quizzes and ratings to maintain credibility while keeping it engaging.</li>
+<li>Optimizing Skill Matching – Improving recommendations based on user preferences and skill levels.</li>
+<li>Interactive UI for Skill Swaps – Creating a simple yet effective interface for browsing and proposing skill trades.</li>
+</ul>
 
-### `npm test`
+### 🔹Future Scope
+<ul>
+<li>AI-Based Skill Matching – Enhancing recommendations to connect users with the best skill partners more efficiently.</li>
+<li>Seamless Communication – Introducing direct messaging or chat functionality to enable users to connect with their matched skill partners.</li>
+<!-- <li>Gamification & Achievements – Implementing badges, leaderboards, and interactive challenges to boost user motivation.</li> -->
+</ul>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Screenshots  
+📸 Check out all the screenshots and descriptions [here](screenshots/screenshots.md).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

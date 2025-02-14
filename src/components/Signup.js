@@ -12,7 +12,7 @@ const SignUpPage = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
+      const response = await axios.post('https://skill-swap-u2xd.onrender.com', {
         name,
         email,
         password
@@ -22,7 +22,7 @@ const SignUpPage = () => {
   
       if (response.data.user && response.data.user._id) {
         localStorage.setItem("userId", response.data.user._id);
-        navigate('/mainPage');  
+        navigate('/skills-prompt');  
       } else {
         console.error("❌ Signup failed: user ID missing in response");
       }

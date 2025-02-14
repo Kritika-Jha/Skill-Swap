@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-content">
-        <p>&copy; 2025 Your Company. All rights reserved.</p>
+        <p>&copy; 2025 SkillSwap. All rights reserved.</p>
         <div className="social-links">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
           <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>

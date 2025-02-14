@@ -5,6 +5,8 @@ import "./QuizPage.css";
 
 // 📝 Import the question bank
 import { questionBank } from "../data/questionBank";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const QuizPage = () => {
   const navigate = useNavigate();
@@ -100,7 +102,7 @@ const QuizPage = () => {
       
       console.log(rating); // Output the rating
 
-      await axios.post("http://localhost:5000/api/user/update-skill", {
+      await axios.post("https://skill-swap-u2xd.onrender.com/api/user/update-skill", {
         userId,
         skillName,
         rating,
@@ -112,51 +114,55 @@ const QuizPage = () => {
   };
 
   return (
-    <div className="quiz-container">
-      {!quizCompleted ? (
-        questions.length > 0 ? (
-          <div id="quiz-content">
-            <h2 id="quiz-title">📚 {skillName} Quiz</h2>
+    <div className="quiz">
+      <Header />
+      <div className="quiz-container">
+        {!quizCompleted ? (
+          questions.length > 0 ? (
+            <div id="quiz-content">
+              <h2 id="quiz-title">📚 {skillName} Quiz</h2>
 
-            {/* Timer Bar */}
-            <div className="timer-bar">
-              <div className="timer-progress" style={{ width: `${(timeLeft / 30) * 100}%` }}></div>
+              {/* Timer Bar */}
+              <div className="timer-bar">
+                <div className="timer-progress" style={{ width: `${(timeLeft / 30) * 100}%` }}></div>
+              </div>
+              <p className="timer-text">⏳ {timeLeft} sec</p>
+
+              {/* Question */}
+              <p id="question-text">{questions[currentQuestionIndex].question}</p>
+
+              {/* Answer Options */}
+              <div className="quiz-options">
+                {questions[currentQuestionIndex].options.map((option, index) => (
+                  <button
+                    key={index}
+                    className={`quiz-option ${selectedAnswer === option ? "selected" : ""}`}
+                    onClick={() => setSelectedAnswer(option)}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+
+              {/* Next Button */}
+              <button id="next-question" onClick={handleAnswer} disabled={!selectedAnswer}>
+                {currentQuestionIndex < questions.length - 1 ? "Next" : "Finish"}
+              </button>
             </div>
-            <p className="timer-text">⏳ {timeLeft} sec</p>
-
-            {/* Question */}
-            <p id="question-text">{questions[currentQuestionIndex].question}</p>
-
-            {/* Answer Options */}
-            <div className="quiz-options">
-              {questions[currentQuestionIndex].options.map((option, index) => (
-                <button
-                  key={index}
-                  className={`quiz-option ${selectedAnswer === option ? "selected" : ""}`}
-                  onClick={() => setSelectedAnswer(option)}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-
-            {/* Next Button */}
-            <button id="next-question" onClick={handleAnswer} disabled={!selectedAnswer}>
-              {currentQuestionIndex < questions.length - 1 ? "Next" : "Finish"}
+          ) : (
+            <p id="loading-message">⚠️ No Questions Available for {skillName}. Please try another skill.</p>
+          )
+        ) : (
+          <div id="quiz-result">
+            <h2>🎉 Quiz Completed!</h2>
+            <p>Your Score: {score}/{questions.length}</p>
+            <button id="return-button" onClick={() => navigate("/skills")}>
+              Return to Skills
             </button>
           </div>
-        ) : (
-          <p id="loading-message">⚠️ No Questions Available for {skillName}. Please try another skill.</p>
-        )
-      ) : (
-        <div id="quiz-result">
-          <h2>🎉 Quiz Completed!</h2>
-          <p>Your Score: {score}/{questions.length}</p>
-          <button id="return-button" onClick={() => navigate("/skills")}>
-            Return to Skills
-          </button>
-        </div>
-      )}
+        )}
+      </div>
+      <Footer />
     </div>
   );
 };
