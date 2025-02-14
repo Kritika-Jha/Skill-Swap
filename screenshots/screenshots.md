@@ -9,7 +9,7 @@
 <p>The landing page provides an overview of SkillSwap, introducing its core features. Users can seamlessly navigate to their profile, find recommended skill partners, or browse learning resources.</p>
 
 ### 3.Profile Page
-<img src="https://github.com/user-attachments/assets/5f7e8f29-bf3e-40d8-bc63-e722c7cb87ec" alt="Profile Page" width="60%">
+<img src="https://github.com/user-attachments/assets/e5964654-843d-495c-80dc-80ded7c5a131" alt="Profile Page" width="60%">
 <p>The profile page showcases user details, including their bio, skills they offer, and skills they wish to learn. Users can update their information, making it easier to connect with the right skill-swapping partners.</p>
 
 ### 4.Quiz Page
