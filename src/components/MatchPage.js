@@ -59,7 +59,6 @@ const MatchPage = () => {
           <p>No suitable matches found.</p>
         )}
 
-        {/* 🔹 Profile Preview Modal */}
         {selectedProfile && (
           <div ref={modalRef} className="profile-modal">
             <div className="profile-modal-content">
@@ -70,7 +69,6 @@ const MatchPage = () => {
               <ul>{selectedProfile.canTeach.map((skill, index) => <li key={index}>{skill}</li>)}</ul>
               <h4>📖 Wants to Learn</h4>
               <ul>{selectedProfile.wantsToLearn.map((skill, index) => <li key={index}>{skill}</li>)}</ul>
-              {/* ✅ FIX: Pass the correct user ID when navigating */}
               <button className="view-full-profile-btn" onClick={() => navigate(`/profile/${selectedProfile.id}`)}>
                 📄 View Full Profile
               </button>
