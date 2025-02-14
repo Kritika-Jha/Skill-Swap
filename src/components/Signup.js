@@ -22,7 +22,7 @@ const SignUpPage = () => {
   
       if (response.data.user && response.data.user._id) {
         localStorage.setItem("userId", response.data.user._id);
-        navigate('/mainPage');  
+        navigate('/skills-prompt');  
       } else {
         console.error("❌ Signup failed: user ID missing in response");
       }

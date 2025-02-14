@@ -10,9 +10,7 @@ import ProfilePage from "./components/ProfilePage";
 import CoursesPage from "./components/CoursesPage";
 import CoursePurchasePage from "./components/CoursePurchasePage";
 import SuccessPage from "./components/SuccessPage";
-
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import SkillsPromptPage from "./components/SkillsPromptPage";
 
 function App() {
   return (
@@ -34,6 +32,7 @@ function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/courses/purchase" element={<CoursePurchasePage />} />
         <Route path="/courses/success" element={<SuccessPage />} />
+        <Route path="/skills-prompt" element={<SkillsPromptPage />} />
       </Routes>
      
     </BrowserRouter>
