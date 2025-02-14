@@ -19,7 +19,7 @@ const allowedOrigins = [
 
 
 const corsNewOptions = {
-  origin: ['http://localhost', 'https://skill-swap-web.vercel.app', 'http://127.0.0.1'] /** all Allowed Domains for CORS */
+  origin: ['https://skill-swap-frontend.onrender.com', 'http://localhost', 'https://skill-swap-web.vercel.app', 'http://127.0.0.1'] /** all Allowed Domains for CORS */
 };
 
 app.use(cors(corsNewOptions));
