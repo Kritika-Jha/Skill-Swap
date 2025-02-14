@@ -3,7 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');  
+const userRoutes = require('./routes/userRoutes');
 
 dotenv.config();
 const app = express();
@@ -14,7 +14,7 @@ connectDB();
 // CORS Configuration
 const allowedOrigins = [
   'https://skill-swap-web.vercel.app', // Your deployed frontend URL
-  'http://localhost:3000'             // For local development
+  'http://localhost:3000',            // For local development
 ];
 
 const corsOptions = {
@@ -30,17 +30,14 @@ const corsOptions = {
   credentials: true, // Allow credentials if required (e.g., cookies)
 };
 
-// Enable CORS for all requests
-app.use(cors({ 
-  origin: "https://skill-swap-web.vercel.app/", // Allow requests from your frontend
-  methods: "GET,POST,PUT,DELETE", // Allowed request methods
-  credentials: true // Allow sending cookies if needed
-}));
 // Apply CORS middleware
 app.use(cors(corsOptions));
 
 // Parse incoming JSON
 app.use(express.json());
+
+// Handle preflight requests for CORS
+app.options('*', cors(corsOptions)); // Explicitly handle preflight OPTIONS requests
 
 // API Routes
 app.use('/api/auth', authRoutes);
@@ -50,9 +47,6 @@ app.use('/api/user', userRoutes);
 app.get('/', (req, res) => {
   res.send('🚀 SkillSwap API is Running!');
 });
-
-// Handle preflight requests for CORS
-app.options('*', cors(corsOptions)); // Explicitly handle preflight OPTIONS requests
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
