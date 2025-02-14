@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./SkillsPromptPage.css";
 
 const SkillsPromptPage = () => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ const SkillsPromptPage = () => {
       <h1>👋 Welcome, {user?.name || "Learner"}!</h1>
       <p>Let's start by adding the skills you'd like to learn.</p>
 
-      <div className="learning-section">
+      <div className="skills-section">
         <h3>📚 Skills You Want to Learn</h3>
         <div className="input-container">
           <input
@@ -81,12 +82,12 @@ const SkillsPromptPage = () => {
           />
           <button onClick={addSkill}>➕ Add</button>
         </div>
-        <ul>
+        <ul className="skills-list">
           {learningSkills.map((skill, index) => (
             <li key={index}>{skill}</li>
           ))}
         </ul>
-        <button onClick={saveLearningSkills} disabled={learningSkills.length === 0}>
+        <button className="submit-btn" onClick={saveLearningSkills} disabled={learningSkills.length === 0}>
           ✅ Save & Proceed to Teaching Skills
         </button>
       </div>
