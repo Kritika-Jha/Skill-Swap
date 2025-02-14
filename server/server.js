@@ -12,26 +12,41 @@ const app = express();
 connectDB();
 
 // CORS Configuration
-const allowedOrigins = [
-  'https://skill-swap-web.vercel.app', // Your frontend URL
-  'http://localhost:3000',            // For local development
-];
+// const allowedOrigins = [
+//   'https://skill-swap-web.vercel.app', // Your frontend URL
+// ];
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow the origin
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS for preflight
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow headers like Content-Type and Authorization
-  credentials: true, // Allow credentials if required (e.g., cookies)
-};
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true); // Allow the origin
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS for preflight
+//   allowedHeaders: ['Content-Type', 'Authorization'], // Allow headers like Content-Type and Authorization
+//   credentials: true, // Allow credentials if required (e.g., cookies)
+// };
 
 // Apply CORS middleware
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
+
+// Manually set CORS headers for every request
+app.use((req, res, next) => {
+  // Set the CORS headers here
+  res.setHeader('Access-Control-Allow-Origin', 'https://skill-swap-web.vercel.app');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, UPDATE');
+  
+  // If the request is a preflight OPTIONS request, return immediately
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
+  next(); // Continue to the next middleware or route handler
+});
 
 // Parse incoming JSON
 app.use(express.json());
