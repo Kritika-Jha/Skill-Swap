@@ -12,6 +12,10 @@
 <img src="https://github.com/user-attachments/assets/6a606a98-e74b-458d-a512-e0d4c7c3bad9" alt="Profile Page" width="60%">
 <p>The profile page showcases user details, including their bio, skills they offer, and skills they wish to learn. Users can update their information, making it easier to connect with the right skill-swapping partners.</p>
 
+### 4.Quiz Page
+<img src="https://github.com/user-attachments/assets/4a8d3363-d7b0-4c41-8640-316570ab4c4b" alt="Profile Page" width="60%">
+<p>The Quiz Page helps in verifying users' proficiency in the skills they claim to offer. This ensures credibility and trust within the SkillSwap community.</p>
+
 ### 4.Recommended for You Page
 <img src="https://github.com/user-attachments/assets/8dd45e11-3b83-40c0-ad2b-070cccbcb333" alt="Recommended for You Page" width="60%">
 <p>This page suggests potential learning partners based on users’ listed interests. Instead of random matches, it prioritizes relevant skill connections, allowing users to explore profiles and initiate learning exchanges.</p>
