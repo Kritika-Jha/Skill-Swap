@@ -2,7 +2,7 @@
 
 ## 1.Login Page
 <img src="https://github.com/user-attachments/assets/be0cbe38-426e-4656-9f33-d5b60dd0bba7" alt="Login Page" width="60%">
--->Users can create an account or log in securely to access SkillSwap. This step ensures a personalized experience where they can list skills, explore recommendations, and enroll in courses.
+<p>Users can create an account or log in securely to access SkillSwap. This step ensures a personalized experience where they can list skills, explore recommendations, and enroll in courses.</p>
 
 ## 2.Home Page
 <img src="https://github.com/user-attachments/assets/8029c926-9883-4f2b-a2ea-c9ec6ad91b63" alt="Home Page" width="60%">
