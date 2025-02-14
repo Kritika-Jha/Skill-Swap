@@ -11,12 +11,16 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// CORS Setup to allow only the frontend URL
-const allowedOrigins = ['https://skill-swap-web.vercel.app'];  // Add your frontend URL here
+// CORS Configuration
+const allowedOrigins = [
+  'https://skill-swap-web.vercel.app', // Your deployed frontend URL
+  'http://localhost:3000'             // For local development
+];
+
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
+      callback(null, true); // Allow the origin
     } else {
       callback(new Error('Not allowed by CORS'));
     }
@@ -24,14 +28,17 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 
-app.use(cors(corsOptions));  // Apply the CORS options
+// Apply CORS middleware
+app.use(cors(corsOptions));
 
+// Parse incoming JSON
 app.use(express.json());
 
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 
+// Root Route
 app.get('/', (req, res) => {
   res.send('🚀 SkillSwap API is Running!');
 });
