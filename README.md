@@ -37,4 +37,9 @@
 <li>Instant Enrollment – Start learning with just one click.</li>
 </ul>
 
+### 🔹Future Scope
+<ul>
+<li>Advanced AI-Based Skill Matching – Enhancing recommendations to connect users with the best skill partners more efficiently.</li>
+<li>Seamless Communication – Introducing direct messaging or chat functionality to enable users to connect with their matched skill partners.</li>
+</ul>
 
