@@ -13,7 +13,7 @@ connectDB();
 
 // CORS Configuration
 const allowedOrigins = [
-  'https://skill-swap-web.vercel.app', // Your deployed frontend URL
+  'https://skill-swap-web.vercel.app', // Your frontend URL
   'http://localhost:3000',            // For local development
 ];
 
@@ -36,7 +36,7 @@ app.use(cors(corsOptions));
 // Parse incoming JSON
 app.use(express.json());
 
-// Handle preflight requests for CORS
+// Handle preflight requests for all routes
 app.options('*', cors(corsOptions)); // Explicitly handle preflight OPTIONS requests
 
 // API Routes
