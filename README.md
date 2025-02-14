@@ -4,7 +4,7 @@
 ### 🔹Features
 ### 1️⃣ Authentication (Login/Sign-Up)
 <ul>
-#### <li>User Registration – Create an account to access SkillSwap.</li>
-#### <li>Secure Login – Sign in to view and manage your profile.</li>
-#### <li>Seamless Navigation – Redirects users to the Home Page after login/sign-up.</li>
+<li>User Registration – Create an account to access SkillSwap.</li>
+<li>Secure Login – Sign in to view and manage your profile.</li>
+<li>Seamless Navigation – Redirects users to the Home Page after login/sign-up.</li>
 </ul>
