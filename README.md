@@ -44,3 +44,7 @@
 <!-- <li>Gamification & Achievements – Implementing badges, leaderboards, and interactive challenges to boost user motivation.</li> -->
 </ul>
 
+## Screenshots  
+📸 Check out all the screenshots and descriptions [here](screenshots/screenshots.md).
+
+
