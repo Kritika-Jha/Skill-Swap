@@ -39,7 +39,7 @@
 
 ### 🔹Tech Stack
 <ul>
-<>SkillSwap is built using the MERN Stack along with CSS for styling.</li>
+<li>SkillSwap is built using the MERN Stack along with CSS for styling.</li>
 </ul>
 
 ### 🔹Challenges Faced & Learnings
