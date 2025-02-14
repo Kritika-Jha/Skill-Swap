@@ -18,7 +18,7 @@ const SkillsPage = () => {
       return;
     }
 
-    axios.get(`http://localhost:5000/api/user/${userId}`)
+    axios.get(`https://skill-swap-u2xd.onrender.com/api/user/${userId}`)
       .then(res => {
         console.log("✅ Skills fetched:", res.data);
         setSkills(res.data.skills || []); // ✅ Ensure it's always an array
@@ -37,7 +37,7 @@ const SkillsPage = () => {
       return;
     }
 
-    axios.post("http://localhost:5000/api/user/add-skill", { userId, skill: newSkill })
+    axios.post("https://skill-swap-u2xd.onrender.com/api/user/add-skill", { userId, skill: newSkill })
       .then(res => {
         console.log("✅ Skill added successfully:", res.data);
         setSkills(res.data.skills || []); // ✅ Update UI with latest skills from backend

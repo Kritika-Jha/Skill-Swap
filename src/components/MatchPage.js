@@ -16,7 +16,7 @@ const MatchPage = () => {
     if (!userId) return;
 
     axios
-      .get(`http://localhost:5000/api/user/match/${userId}`)
+      .get(`https://skill-swap-u2xd.onrender.com/api/user/match/${userId}`)
       .then((res) => setMatches(res.data.matches || []))
       .catch((err) => console.error("❌ Error fetching matches:", err));
   }, [userId]);

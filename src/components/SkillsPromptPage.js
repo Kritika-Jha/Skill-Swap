@@ -25,7 +25,7 @@ const SkillsPromptPage = () => {
   useEffect(() => {
     if (userId) {
       axios
-        .get(`http://localhost:5000/api/user/${userId}`)
+        .get(`https://skill-swap-u2xd.onrender.com/api/user/${userId}`)
         .then((res) => {
           setUser(res.data);
           setLearningSkills(res.data.learningSkills || []);
@@ -50,7 +50,7 @@ const SkillsPromptPage = () => {
     try {
       // Send each skill one by one to ensure it's saved properly
       for (const skill of learningSkills) {
-        await axios.post("http://localhost:5000/api/user/add-learning-skill", {
+        await axios.post("https://skill-swap-u2xd.onrender.com/api/user/add-learning-skill", {
           userId,
           skill, // Sending individual skills as per backend requirements
         });
