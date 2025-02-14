@@ -12,23 +12,30 @@ const app = express();
 connectDB();
 
 // CORS Configuration
-const allowedOrigins = [
-  'https://skill-swap-web.vercel.app', // Your frontend URL
-  'http://localhost:3000',            // For local development
-];
+// const allowedOrigins = [
+//   'https://skill-swap-web.vercel.app', // Your frontend URL
+//   'http://localhost:3000',            // For local development
+// ];
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow the origin
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS for preflight
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow headers like Content-Type and Authorization
-  credentials: true, // Allow credentials if required (e.g., cookies)
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true); // Allow the origin
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS for preflight
+//   allowedHeaders: ['Content-Type', 'Authorization'], // Allow headers like Content-Type and Authorization
+//   credentials: true, // Allow credentials if required (e.g., cookies)
+// };
+
+//Final Fixes for CORS
+const corsNewOptions = {
+  origin: ['https://skill-swap-web.vercel.app', 'http://localhost', 'http://127.0.0.1'] /** all Allowed Domains for CORS */
 };
+
+app.use(cors(corsNewOptions));
 
 // Apply CORS middleware
 app.use(cors(corsOptions));
@@ -37,7 +44,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Handle preflight requests for all routes
-app.options('*', cors(corsOptions)); // Explicitly handle preflight OPTIONS requests
+//app.options('*', cors(corsOptions)); // Explicitly handle preflight OPTIONS requests
 
 // API Routes
 app.use('/api/auth', authRoutes);
