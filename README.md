@@ -37,12 +37,22 @@
 <li>Instant Enrollment – Start learning with just one click.</li>
 </ul>
 
+### 🔹Tech Stack
+
+### 🔹Challenges Faced & Learnings
+<ul>
+<li>Skill Verification & Rating – Designing quizzes and ratings to maintain credibility while keeping it engaging.</li>
+<li>Optimizing Skill Matching – Improving recommendations based on user preferences and skill levels.</li>
+<li>Interactive UI for Skill Swaps – Creating a simple yet effective interface for browsing and proposing skill trades.</li>
+</ul>
+
 ### 🔹Future Scope
 <ul>
 <li>AI-Based Skill Matching – Enhancing recommendations to connect users with the best skill partners more efficiently.</li>
 <li>Seamless Communication – Introducing direct messaging or chat functionality to enable users to connect with their matched skill partners.</li>
 <!-- <li>Gamification & Achievements – Implementing badges, leaderboards, and interactive challenges to boost user motivation.</li> -->
 </ul>
+
 
 ## Screenshots  
 📸 Check out all the screenshots and descriptions [here](screenshots/screenshots.md).
