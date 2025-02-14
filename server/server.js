@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 // Handle preflight requests for all routes
-app.options('*', cors(corsOptions)); // Explicitly handle preflight OPTIONS requests
+//app.options('*', cors(corsOptions)); // Explicitly handle preflight OPTIONS requests
 
 // API Routes
 app.use('/api/auth', authRoutes);
