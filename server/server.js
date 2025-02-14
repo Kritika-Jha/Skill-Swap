@@ -30,6 +30,12 @@ const corsOptions = {
   credentials: true, // Allow credentials if required (e.g., cookies)
 };
 
+// Enable CORS for all requests
+app.use(cors({ 
+  origin: "https://skill-swap-web.vercel.app/", // Allow requests from your frontend
+  methods: "GET,POST,PUT,DELETE", // Allowed request methods
+  credentials: true // Allow sending cookies if needed
+}));
 // Apply CORS middleware
 app.use(cors(corsOptions));
 
