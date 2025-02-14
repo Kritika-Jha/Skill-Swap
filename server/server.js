@@ -11,8 +11,22 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
+// CORS Setup to allow only the frontend URL
+const allowedOrigins = ['https://skill-swap-web.vercel.app'];  // Add your frontend URL here
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+};
+
+app.use(cors(corsOptions));  // Apply the CORS options
+
 app.use(express.json());
-app.use(cors());
 
 // API Routes
 app.use('/api/auth', authRoutes);
