@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AuthPage.css'; // Ensure this file exists
-import axios from 'axios'; // Ensure axios is installed
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
@@ -10,24 +9,32 @@ const SignUpPage = () => {
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent page reload
+  
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
-        name,
-        email,
-        password
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, password })
       });
   
-      console.log("✅ Signup successful response:", response.data); // Debugging log
+      const data = await response.json();
+      console.log("📥 Server Response:", data);
   
-      if (response.data.user && response.data.user._id) {
-        localStorage.setItem("userId", response.data.user._id);
-        navigate('/skills-prompt');  
-      } else {
-        console.error("❌ Signup failed: user ID missing in response");
+      if (!response.ok) {
+        throw new Error(data.message || "Signup failed");
       }
+  
+      // ✅ Store userId in localStorage
+      localStorage.setItem("userId", data.userId); // Ensure backend sends userId
+  
+      alert("✅ Signup successful!");
+      navigate("/skills-prompt"); // Redirect to skills-prompt
     } catch (error) {
-      console.error("❌ SignUp error:", error.response ? error.response.data : error.message);
+      console.error("❌ SignUp error:", error.message);
+      alert("Signup failed: " + error.message); // Show the error
     }
   };
   

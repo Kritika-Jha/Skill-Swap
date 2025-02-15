@@ -5,6 +5,7 @@ require('dotenv').config(); // ✅ Load environment variables
 
 exports.signup = async (req, res) => {
   console.log("✅ Signup Route Hit", req.body); // Debugging
+  console.log("📥 Received Data:", req.body);
 
   const { name, email, password } = req.body;
 
