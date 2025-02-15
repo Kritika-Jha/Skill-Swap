@@ -26,7 +26,7 @@ const ProfilePage = () => {
     }
 
     axios
-      .get(`https://skill-swap-dbtv.onrender.com/api/user/${userId}`)
+      .get(`http://localhost:3000/api/user/${userId}`)
       .then((res) => {
         const fetchedUser = res.data;
         setUser({
@@ -43,7 +43,7 @@ const ProfilePage = () => {
     if (!newLearningSkill.trim()) return;
 
     axios
-      .post("https://skill-swap-dbtv.onrender.com/api/user/add-learning-skill", {
+      .post("http://localhost:3000/api/user/add-learning-skill", {
         userId,
         skill: newLearningSkill,
       })
@@ -60,7 +60,7 @@ const ProfilePage = () => {
 
   const removeLearningSkill = (skillToRemove) => {
     axios
-      .post("https://skill-swap-dbtv.onrender.com/api/user/remove-learning-skill", {
+      .post("http://localhost:3000/api/user/remove-learning-skill", {
         userId,
         skill: skillToRemove,
       })
@@ -110,7 +110,7 @@ const ProfilePage = () => {
 
   const updateProfile = () => {
     axios
-      .post("https://skill-swap-dbtv.onrender.com/api/user/update-profile", {
+      .post("http://localhost:3000/api/user/update-profile", {
         userId,
         name: user.name,
         email: user.email,

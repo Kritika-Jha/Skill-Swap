@@ -11,40 +11,19 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// CORS Configuration
-// const allowedOrigins = [
-//   'https://skill-swap-web.vercel.app', // Your frontend URL
-//   'http://localhost:3000',            // For local development
-// ];
-
-// const corsOptions = {
-//   origin: (origin, callback) => {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true); // Allow the origin
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS for preflight
-//   allowedHeaders: ['Content-Type', 'Authorization'], // Allow headers like Content-Type and Authorization
-//   credentials: true, // Allow credentials if required (e.g., cookies)
-// };
-
-//Final Fixes for CORS
+// Correct CORS Configuration
 const corsNewOptions = {
-  origin: ['https://skill-swap-web.vercel.app', 'http://localhost', 'http://127.0.0.1'] /** all Allowed Domains for CORS */
+  origin: ['http://localhost:3000', 'http://127.0.0.1'], // Allowed domains
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // If using cookies or authentication
 };
 
-app.use(cors(corsNewOptions));
-
 // Apply CORS middleware
-app.use(cors(corsOptions));
+app.use(cors(corsNewOptions)); // ✅ FIXED: Use corsNewOptions
 
 // Parse incoming JSON
 app.use(express.json());
-
-// Handle preflight requests for all routes
-//app.options('*', cors(corsOptions)); // Explicitly handle preflight OPTIONS requests
 
 // API Routes
 app.use('/api/auth', authRoutes);
