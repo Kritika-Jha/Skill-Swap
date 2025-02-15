@@ -32,7 +32,7 @@ connectDB();
 
 //Final Fixes for CORS
 const corsNewOptions = {
-  origin: ['https://skill-swap-web.vercel.app', 'http://localhost', 'http://127.0.0.1'] /** all Allowed Domains for CORS */
+  origin: ['https://skill-swap-web.vercel.app', 'http://localhost:3000', 'http://127.0.0.1'] /** all Allowed Domains for CORS */
 };
 
 app.use(cors(corsNewOptions));

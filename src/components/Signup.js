@@ -12,7 +12,7 @@ const SignUpPage = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://skill-swap-u2xd.onrender.com', {
+      const response = await axios.post('https://skill-swap-u2xd.onrender.com/api/auth/signup', {
         name,
         email,
         password
