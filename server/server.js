@@ -13,14 +13,22 @@ connectDB();
 
 // Correct CORS Configuration
 const corsNewOptions = {
+<<<<<<< HEAD
   origin: ['http://localhost:3000', 'http://127.0.0.1'], // Allowed domains
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // If using cookies or authentication
+=======
+  origin: ['https://skill-swap-web.vercel.app', 'http://localhost:3000', 'http://127.0.0.1'] /** all Allowed Domains for CORS */
+>>>>>>> add9345185e0d77ff8a46303b9c407795a6489e4
 };
 
 // Apply CORS middleware
+<<<<<<< HEAD
 app.use(cors(corsNewOptions)); // ✅ FIXED: Use corsNewOptions
+=======
+//app.use(cors(corsOptions));
+>>>>>>> add9345185e0d77ff8a46303b9c407795a6489e4
 
 // Parse incoming JSON
 app.use(express.json());
