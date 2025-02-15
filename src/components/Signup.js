@@ -31,7 +31,7 @@ const SignUpPage = () => {
       localStorage.setItem("userId", data.userId); // Ensure backend sends userId
   
       alert("✅ Signup successful!");
-      navigate("/skills-prompt"); // Redirect to skills-prompt
+      navigate("/mainPage", { replace: true }); // Redirect to skills-prompt
     } catch (error) {
       console.error("❌ SignUp error:", error.message);
       alert("Signup failed: " + error.message); // Show the error

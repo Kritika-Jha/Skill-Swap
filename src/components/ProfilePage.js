@@ -12,9 +12,8 @@ const ProfilePage = () => {
 
   const [user, setUser] = useState(null);
   const [newLearningSkill, setNewLearningSkill] = useState("");
-  const [newTeachingSkill, setNewTeachingSkill] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const [timeCredits, setTimeCredits] = useState(50); // Default 50
+  const [timeCredits, setTimeCredits] = useState(50);
 
   const isOwnProfile = userId === loggedInUserId;
 
@@ -24,35 +23,39 @@ const ProfilePage = () => {
       navigate("/login");
       return;
     }
-
+  
     axios
       .get(`http://localhost:5000/api/user/${userId}`)
       .then((res) => {
-        const fetchedUser = res.data;
+        if (!res.data) {
+          console.error("❌ No user data received.");
+          return;
+        }
+  
         setUser({
-          ...fetchedUser,
-          skills: fetchedUser.skills || [],
-          learningSkills: fetchedUser.learningSkills || [],
-          about: fetchedUser.about || "",
+          ...res.data,
+          skills: res.data.skills || [],
+          learningSkills: res.data.learningSkills || [],
+          about: res.data.about || "",
         });
+        setTimeCredits(res.data.timeCredits || 50);
       })
-      .catch((err) => console.error("❌ Error fetching profile:", err));
+      .catch((err) => {
+        console.error("❌ Error fetching profile:", err);
+        navigate("/login"); // Redirect if fetching fails
+      });
   }, [userId, navigate]);
+  
 
   const addLearningSkill = () => {
     if (!newLearningSkill.trim()) return;
 
     axios
-      .post("http://localhost:5000/api/user/add-learning-skill", {
-        userId,
-        skill: newLearningSkill,
-      })
-      .then((res) =>
-        setUser((prev) => ({
-          ...prev,
-          learningSkills: res.data.learningSkills || [],
-        }))
-      )
+      .post("http://localhost:5000/api/user/add-learning-skill", { userId, skill: newLearningSkill })
+      .then((res) => setUser((prev) => ({
+        ...prev,
+        learningSkills: res.data.learningSkills || [],
+      })))
       .catch((err) => console.error("❌ Error adding learning skill:", err));
 
     setNewLearningSkill("");
@@ -60,53 +63,13 @@ const ProfilePage = () => {
 
   const removeLearningSkill = (skillToRemove) => {
     axios
-      .post("http://localhost:5000/api/user/remove-learning-skill", {
-        userId,
-        skill: skillToRemove,
-      })
-      .then((res) =>
-        setUser((prev) => ({
-          ...prev,
-          learningSkills: res.data.learningSkills || [],
-        }))
-      )
+      .post("http://localhost:5000/api/user/remove-learning-skill", { userId, skill: skillToRemove })
+      .then((res) => setUser((prev) => ({
+        ...prev,
+        learningSkills: res.data.learningSkills || [],
+      })))
       .catch((err) => console.error("❌ Error removing skill:", err));
   };
-
-  // const addTeachingSkill = () => {
-  //   if (!newTeachingSkill.trim()) return;
-
-  //   axios
-  //     .post("http://localhost:5000/api/user/add-teaching-skill", {
-  //       userId,
-  //       skillName: newTeachingSkill,
-  //       rating: 5, // Default rating (adjust if needed)
-  //     })
-  //     .then((res) =>
-  //       setUser((prev) => ({
-  //         ...prev,
-  //         skills: res.data.skills || [],
-  //       }))
-  //     )
-  //     .catch((err) => console.error("❌ Error adding teaching skill:", err));
-
-  //   setNewTeachingSkill("");
-  // };
-
-  // const removeTeachingSkill = (skillId) => {
-  //   axios
-  //     .post("http://localhost:5000/api/user/remove-teaching-skill", {
-  //       userId,
-  //       skillId,
-  //     })
-  //     .then((res) =>
-  //       setUser((prev) => ({
-  //         ...prev,
-  //         skills: res.data.skills || [],
-  //       }))
-  //     )
-  //     .catch((err) => console.error("❌ Error removing teaching skill:", err));
-  // };
 
   const updateProfile = () => {
     axios
@@ -114,23 +77,20 @@ const ProfilePage = () => {
         userId,
         name: user.name,
         email: user.email,
-        about: user.about, // Ensure 'about' is included
-        learningSkills: user.learningSkills, // Ensure 'learningSkills' is included
+        about: user.about,
+        learningSkills: user.learningSkills,
       })
       .then((res) => {
-        console.log("✅ Profile updated:", res.data); // Debugging
+        console.log("✅ Profile updated:", res.data);
         setUser((prevUser) => ({
           ...prevUser,
-          about: res.data.about || prevUser.about, // Fallback if 'about' is missing
-          learningSkills: res.data.learningSkills || prevUser.learningSkills, // Fallback if missing
+          about: res.data.about || prevUser.about,
+          learningSkills: res.data.learningSkills || prevUser.learningSkills,
         }));
         setIsEditing(false);
       })
       .catch((err) => console.error("❌ Error updating profile:", err));
   };
-  
-
-  
 
   if (!user)
     return (
@@ -146,11 +106,9 @@ const ProfilePage = () => {
         <div className="profile-header">
           <h2>👤 {isEditing ? "Edit Profile" : `${user.name}'s Profile`}</h2>
         </div>
-
         <div className="profile-details">
           <label>📧 Email:</label>
           <p>{user.email}</p>
-
           <label>📝 About Me:</label>
           {isEditing ? (
             <textarea
@@ -161,26 +119,19 @@ const ProfilePage = () => {
             <p>{user.about || "No additional information."}</p>
           )}
         </div>
-
-        {/* Time Credits */}
         <div className="time-credit-section">
           <h3>⏳ Time Credits: {timeCredits}</h3>
         </div>
-
-        {/* Teaching Skills Section */}
         <div className="skills-header">
-        <h3>📖 Teaching Skills</h3>
+          <h3>📖 Teaching Skills</h3>
           {isOwnProfile && (
-            <button
-              className="edit-skills-button"
-              onClick={() => navigate("/skills")}
-            >
+            <button className="edit-skills-button" onClick={() => navigate("/skills")}>
               ✏️ Edit
             </button>
           )}
         </div>
         <ul className="skill-list">
-          {user.skills.length > 0 ? (
+          {user.skills?.length > 0 ? (
             user.skills.map((s, i) => (
               <li key={i} className="skill-item">
                 {s.skillName} ({s.rating})
@@ -190,14 +141,12 @@ const ProfilePage = () => {
             <p>No skills added.</p>
           )}
         </ul>
-        {/* Learning Skills Section */}
         <h3>🎯 Learning Skills</h3>
         <ul className="skill-list">
-          {user.learningSkills.length > 0 ? (
+          {user.learningSkills?.length > 0 ? (
             user.learningSkills.map((s, i) => (
               <li key={i} className="skill-item">
-                {s}{" "}
-                {isEditing && (
+                {s} {isEditing && (
                   <button className="delete-skill" onClick={() => removeLearningSkill(s)}>
                     ❌
                   </button>
@@ -208,7 +157,6 @@ const ProfilePage = () => {
             <p>No learning skills added.</p>
           )}
         </ul>
-
         {isEditing && (
           <div className="edit-profile-section">
             <input
@@ -220,8 +168,6 @@ const ProfilePage = () => {
             <button onClick={addLearningSkill}>➕ Add</button>
           </div>
         )}
-
-        {/* Edit Button */}
         {isOwnProfile && (
           <button className="edit-button" onClick={isEditing ? updateProfile : () => setIsEditing(true)}>
             {isEditing ? "Save Changes" : "Edit Profile"}
