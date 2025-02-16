@@ -102,7 +102,7 @@ const QuizPage = () => {
       
       console.log(rating); // Output the rating
 
-      await axios.post("https://skill-swap-u2xd.onrender.com/api/user/update-skill", {
+      await axios.post("http://localhost:5000/api/user/update-skill", {
         userId,
         skillName,
         rating,
