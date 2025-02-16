@@ -28,7 +28,7 @@ const SignUpPage = () => {
       }
   
       // ✅ Store userId in localStorage
-      localStorage.setItem("userId", data.userId); // Ensure backend sends userId
+      localStorage.setItem("userId", data.user._id); // Ensure backend sends userId
   
       alert("✅ Signup successful!");
       navigate("/mainPage", { replace: true }); // Redirect to skills-prompt
