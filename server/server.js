@@ -13,7 +13,7 @@ connectDB();
 
 // Correct CORS Configuration
 const corsNewOptions = {
-  origin: ['http://localhost:3000', 'http://127.0.0.1'], // Allowed domains
+  origin: ['http://localhost:3000', 'http://127.0.0.1', 'https://skill-swap-frontend-adnu.onrender.com', 'https://onrender.com', 'localhost', 'https://localhost', 'http://localhost'], // Allowed domains
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // If using cookies or authentication
