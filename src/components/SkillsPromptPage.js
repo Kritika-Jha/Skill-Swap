@@ -25,7 +25,7 @@ const SkillsPromptPage = () => {
   useEffect(() => {
     if (userId) {
       axios
-        .get(`http://localhost:5000/api/user/${userId}`)
+        .get(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/user/${userId}`)
         .then((res) => {
           setUser(res.data);
           setLearningSkills(res.data.learningSkills || []);
@@ -50,7 +50,7 @@ const SkillsPromptPage = () => {
     try {
       // Send each skill one by one to ensure it's saved properly
       for (const skill of learningSkills) {
-        await axios.post("http://localhost:5000/api/user/add-learning-skill", {
+        await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/user/add-learning-skill`, {
           userId,
           skill, // Sending individual skills as per backend requirements
         });

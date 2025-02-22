@@ -1,6 +1,3 @@
 import axios from 'axios';
-
-const API_URL = 'http://localhost:5000';
-
-export const fetchQuestions = (skill) => axios.get(`${API_URL}/questions/${skill}`);
-export const submitQuiz = (data) => axios.post(`${API_URL}/submit`, data);
+export const fetchQuestions = (skill) => axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/questions/${skill}`);
+export const submitQuiz = (data) => axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/submit`, data);

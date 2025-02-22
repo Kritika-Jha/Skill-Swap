@@ -25,7 +25,7 @@ const ProfilePage = () => {
     }
   
     axios
-      .get(`http://localhost:5000/api/user/${userId}`)
+      .get(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/user/${userId}`)
       .then((res) => {
         if (!res.data) {
           console.error("❌ No user data received.");
@@ -51,7 +51,7 @@ const ProfilePage = () => {
     if (!newLearningSkill.trim()) return;
 
     axios
-      .post("http://localhost:5000/api/user/add-learning-skill", { userId, skill: newLearningSkill })
+      .post(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/user/add-learning-skill`, { userId, skill: newLearningSkill })
       .then((res) => setUser((prev) => ({
         ...prev,
         learningSkills: res.data.learningSkills || [],
@@ -63,7 +63,7 @@ const ProfilePage = () => {
 
   const removeLearningSkill = (skillToRemove) => {
     axios
-      .post("http://localhost:5000/api/user/remove-learning-skill", { userId, skill: skillToRemove })
+      .post(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/user/remove-learning-skill`, { userId, skill: skillToRemove })
       .then((res) => setUser((prev) => ({
         ...prev,
         learningSkills: res.data.learningSkills || [],
@@ -73,7 +73,7 @@ const ProfilePage = () => {
 
   const updateProfile = () => {
     axios
-      .post("http://localhost:5000/api/user/update-profile", {
+      .post(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/user/update-profile`, {
         userId,
         name: user.name,
         email: user.email,

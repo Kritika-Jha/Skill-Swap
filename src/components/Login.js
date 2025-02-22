@@ -11,7 +11,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/auth/login`, { email, password });
       // if (response.data.success) {
       //   // Store the JWT token in localStorage or sessionStorage
       //   localStorage.setItem('token', response.data.token);

@@ -16,7 +16,7 @@ const MatchPage = () => {
     if (!userId) return;
 
     axios
-      .get(`http://localhost:5000/api/user/match/${userId}`)
+      .get(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/user/match/${userId}`)
       .then((res) => setMatches(res.data.matches || []))
       .catch((err) => console.error("❌ Error fetching matches:", err));
   }, [userId]);
